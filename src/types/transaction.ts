@@ -2,7 +2,7 @@ import type { Address, Hash, Hex } from 'viem'
 
 export type Call = {
   target: Address
-  value: bigint
+  value?: bigint
   data: Hex
 }
 
@@ -14,7 +14,7 @@ export type CallWithBigIntAsHex = {
 
 export type TransactionStatus = {
   status: 'PENDING' | 'CONFIRMED'
-  receipt: {
+  receipt?: {
     logs: {
       address: Address
       data: Hex
@@ -30,7 +30,7 @@ export type TransactionStatus = {
 
 export type TransactionStatusWithBigIntAsHex = {
   status: 'PENDING' | 'CONFIRMED'
-  receipt: {
+  receipt?: {
     logs: {
       address: Address
       data: Hex

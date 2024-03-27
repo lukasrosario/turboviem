@@ -24,10 +24,12 @@ export const getTransactionStatus = async <
 
   return {
     ...transactionStatus,
-    receipt: {
-      ...transactionStatus.receipt,
-      blockNumber: hexToBigInt(transactionStatus.receipt.blockNumber),
-      gasUsed: hexToBigInt(transactionStatus.receipt.gasUsed),
-    },
+    receipt: transactionStatus.receipt
+      ? {
+        ...transactionStatus.receipt,
+        blockNumber: hexToBigInt(transactionStatus.receipt.blockNumber),
+        gasUsed: hexToBigInt(transactionStatus.receipt.gasUsed),
+      }
+      : undefined,
   }
 }

@@ -24,7 +24,13 @@ export const sendTransaction = async <
   const transactionIdentifier = await client.request({
     method: 'wallet_sendTransaction',
     params: [
-      { chainId: toHex(chainId), sender, gas: gas ? toHex(gas) : undefined, calls: deepHexlify(calls), capabilities },
+      {
+        chainId: toHex(chainId),
+        sender,
+        gas: gas ? toHex(gas) : undefined,
+        calls: deepHexlify(calls.map((call) => ({ ...call, value: call.value ?? 0n }))),
+        capabilities,
+      },
     ],
   })
 
